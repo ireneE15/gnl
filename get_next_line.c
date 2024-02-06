@@ -6,7 +6,7 @@
 /*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:05:45 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/06 14:12:17 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:27:06 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*nextline;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		return (NULL);
 	}
@@ -85,7 +85,7 @@ char	*get_next_line(int fd)
 	}
 	nextline = ft_strchr(line, '\n');
 	if (line[0] == '\0')
-		free(line);
+		return (free(line), NULL);
 	ft_new_buffer(buffer, line, nextline);
 	return (line);
 }

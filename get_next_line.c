@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: irene <irene@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:05:45 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/06 14:27:06 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/02/07 09:45:07 by irene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_bzero(void *str, size_t n)
 char	*ft_read(int fd, char *buffer)
 {
 	char	*line;
+	char	*temp;
 	int		readcount;
 
 	readcount = -2;
@@ -43,10 +44,11 @@ char	*ft_read(int fd, char *buffer)
 			return (NULL);
 		}
 		buffer[readcount] = '\0';
+		temp = ft_strjoin(line, buffer);
 		free(line);
-		line = ft_strjoin(line, buffer);
-		if (!line)
+		if (!temp)
 			return (NULL);
+		line = temp;
 	}
 	return (line);
 }
@@ -79,13 +81,15 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = ft_read(fd, buffer);
-	if (!line || ft_strlen(line) == 0)
+	if (!line || *line == '\0')
 	{
-		return (line);
+		free(line);
+		return (NULL);
 	}
 	nextline = ft_strchr(line, '\n');
-	if (line[0] == '\0')
-		return (free(line), NULL);
-	ft_new_buffer(buffer, line, nextline);
+	if (nextline)
+		ft_new_buffer(buffer, line, nextline);
+	else
+		ft_bzero(buffer, BUFFER_SIZE + 1);
 	return (line);
 }

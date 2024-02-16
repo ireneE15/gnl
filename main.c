@@ -3,29 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irene <irene@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:22:04 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/07 09:56:52 by irene            ###   ########.fr       */
+/*   Updated: 2024/02/16 11:36:20 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
 #include <fcntl.h>
 #include <unistd.h>
 #include "get_next_line.h"
 
 int	main(void)
 {
-	int		fd;
-	char	*linea;
-
-	fd = open("prueba.txt", O_RDONLY);
-	while (linea)
+	char *filename = "prueba.txt";
+	char *line = NULL;
+	int fd = open(filename, O_RDONLY);
+	int count = 0;
+	if (fd == -1)
+		return (fd);
+	while (1)
 	{
-		linea = get_next_line(fd);
-		printf("%s", linea);
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		printf("%s", line);
+		count++;
+		free(line);
 	}
+	close(fd);
 	return (0);
 }
-*/

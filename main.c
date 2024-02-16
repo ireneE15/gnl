@@ -6,14 +6,14 @@
 /*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:22:04 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/16 12:07:26 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:14:30 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 #include "get_next_line.h"
-/*
+
 int	main(void)
 {
 	char	*filename = "prueba.txt";
@@ -34,4 +34,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-*/
+

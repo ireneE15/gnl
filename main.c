@@ -6,7 +6,7 @@
 /*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:22:04 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/16 11:36:20 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:47:39 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 int	main(void)
 {
-	char *filename = "prueba.txt";
-	char *line = NULL;
-	int fd = open(filename, O_RDONLY);
-	int count = 0;
+	char	*filename = "prueba.txt";
+	char	*line = NULL;
+	int		fd = open(filename, O_RDONLY);
+	int		count = 0;
 	if (fd == -1)
 		return (fd);
 	while (1)

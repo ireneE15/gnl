@@ -6,7 +6,7 @@
 /*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:22:04 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/22 12:52:27 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:06:39 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	int		count = 0;
 	if (fd == -1)
 		return (fd);
-	while (1)
+	while (1) // Significa que fd existe
 	{
 		line = get_next_line(fd);
 		if (line == NULL)

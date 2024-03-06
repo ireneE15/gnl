@@ -6,7 +6,7 @@
 /*   By: iescalon <iescalon@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:05:45 by iescalon          #+#    #+#             */
-/*   Updated: 2024/02/22 12:54:23 by iescalon         ###   ########.fr       */
+/*   Updated: 2024/03/06 10:57:33 by iescalon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	ft_bzero(void *str, size_t n)
 char	*ft_read(int fd, char *buffer)
 {
 	char	*line;
-	char	*temp;
-	int		readcount;
+	char	*temp; // Almacena temporalmente la concatenación de line y buffer
+	int		readcount; // Contador de cantidad de carácteres leídos por iteración
 
 	readcount = -2;
 	line = ft_strdup(buffer);
 	if (!line)
 		return (NULL);
-	while (!(ft_strchr(line, '\n')) && readcount != 0)
+	while (!(ft_strchr(line, '\n')) && readcount != 0) // Si es 0, es el final del archivo
 	{
 		readcount = read(fd, buffer, BUFFER_SIZE);
 		if (readcount == -1)
@@ -64,8 +64,8 @@ void	ft_new_buffer(char *buffer, char *line, char *nextline)
 	}
 	else
 	{
-		len_nextline = ft_strlen(line);
-		ft_strlcpy(buffer, "", BUFFER_SIZE + 1);
+		len_nextline = ft_strlen(line); // Line es última línea
+		ft_strlcpy(buffer, "", BUFFER_SIZE + 1); // Se llena con cadena vacía, sin residuos de la línea anterior
 	}
 	line[len_nextline] = '\0';
 }
